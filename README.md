@@ -85,7 +85,7 @@ Frontend communicates with backend via HTTP requests to render data and perform 
 
 ## Setup Instructions
 ---
-## 🖥️ Backend Setup
+## Backend Setup
 ### 1. Clone the repository
 ```bash
 git clone <your-repo-url>
