@@ -88,7 +88,7 @@ Frontend communicates with backend via HTTP requests to render data and perform 
 ## Backend Setup
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone (https://github.com/AsmaAmeenGeek/OLP)
 ````
 ### 2. Go to the backend folder
 ```bash
