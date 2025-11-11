@@ -135,5 +135,114 @@ npm start
 The frontend runs at:
  **[http://localhost:3000](http://localhost:3000)**
 
+## API Documentation
+### Authentication
+
+| Endpoint           | Method | Auth | Description         |
+| ------------------ | ------ | ---- | ------------------- |
+| /api/auth/register | POST   | No   | Register a new user |
+| /api/auth/login    | POST   | No   | Login existing user |
+
+**Example Request:**
+```json
+POST /api/auth/register
+{
+  "name": "Asma Ameen",
+  "email": "asma@example.com",
+  "password": "mypassword",
+  "role": "student"
+}
 ```
+
+**Example Response:**
+```json
+{
+  "token": "<jwt_token>",
+  "user": {
+    "id": "64f....",
+    "name": "Asma Ameen",
+    "email": "asma@example.com",
+    "role": "student",
+    "createdAt": "2025-11-11T10:00:00.000Z"
+  }
+}
+```
+
+### Courses
+
+| Endpoint                  | Method | Auth | Role       | Description            |
+| ------------------------- | ------ | ---- | ---------- | ---------------------- |
+| /api/courses              | GET    | No   | -          | Get all courses        |
+| /api/courses/:id          | GET    | No   | -          | Get course details     |
+| /api/courses              | POST   | Yes  | Instructor | Create a course        |
+| /api/courses/:id          | PUT    | Yes  | Instructor | Update own course      |
+| /api/courses/:id          | DELETE | Yes  | Instructor | Delete own course      |
+| /api/courses/:id/enroll   | POST   | Yes  | Student    | Enroll in course       |
+| /api/courses/:id/students | GET    | Yes  | Instructor | View enrolled students |
+
+### GPT Recommendations
+
+| Endpoint           | Method | Auth | Role    | Description                             |
+| ------------------ | ------ | ---- | ------- | --------------------------------------- |
+| /api/gpt/recommend | POST   | Yes  | Student | Get personalized course recommendations |
+| /api/gpt/stats     | GET    | Yes  | Student | Get GPT usage stats for the user        |
+
+**Example GPT Request:**
+```json
+POST /api/gpt/recommend
+{
+  "prompt": "I want to become a software engineer, what courses should I follow?",
+  "maxSuggestions": 5
+}
+```
+
+**Example GPT Response:**
+
+```json
+{
+  "success": true,
+  "recommendations": [
+    {
+      "suggested_title": "Introduction to Web Development",
+      "reason": "Learn basic web development skills",
+      "matched": true,
+      "courses": [
+        {
+          "id": "64f....",
+          "title": "Introduction to Web Development",
+          "description": "Learn HTML, CSS, and JavaScript"
+        }
+      ]
+    }
+  ]
+}
+```
+---
+
+## Usage
+1. Register as a student or instructor.
+2. Login to access your dashboard.
+3. Students can browse courses, enroll, and request GPT-based suggestions.
+4. Instructors can create courses, update them, delete them, and view enrolled students.
+5. GPT logs are automatically saved for each request.
+
+---
+
+## Deployment
+* Host the backend on Heroku / Render / AWS.
+* Host the frontend on Vercel / Netlify / AWS.
+* Ensure environment variables are correctly set in the deployment platform.
+* Provide the public URL for demo purposes.
+
+---
+
+## Notes
+* Passwords are securely hashed using bcrypt.
+* JWT is used for authentication.
+* Role-based access control ensures that students cannot manage courses and instructors cannot enroll in courses.
+* GPT integration is rate-limited to prevent abuse.
+
+---
+
+
 
