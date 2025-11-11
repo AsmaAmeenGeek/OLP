@@ -105,11 +105,6 @@ JWT_SECRET=<your_jwt_secret>
 OPENAI_API_KEY=<your_openai_api_key>
 PORT=5000
 ```
-> **Important Notes:**
->
-> * Do **NOT** push `.env` to GitHub.
-> * It should already be listed in your `.gitignore`.
-> * This file contains your private API keys and secrets.
 
 ### 5. Start the backend server
 ```bash
