@@ -89,3 +89,35 @@ Frontend communicates with backend via HTTP requests to render data and perform 
 1. Clone the repository:
 ```bash
 git clone <your-repo-url>
+2. Go to the backend folder:
+```bash
+cd backend
+3. Install dependencies:
+```bash
+npm install
+4. Create a .env file in the backend root:
+```bash
+MONGO_URI=<your_mongodb_uri>
+JWT_SECRET=<your_jwt_secret>
+OPENAI_API_KEY=<your_openai_api_key>
+PORT=5000
+Important Notes:
+Do NOT push .env to GitHub. It is already in .gitignore.
+This file contains your API keys and secrets.
+
+5. Start backend server:
+```bash
+npm run dev
+The backend runs at http://localhost:5000.
+
+### Backend
+1. Go to the frontend folder:
+```bash
+cd frontend
+2. Install dependencies:
+```bash
+npm install
+3. Start frontend server:
+```bash
+npm start
+The frontend runs at http://localhost:3000.
